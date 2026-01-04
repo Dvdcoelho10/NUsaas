@@ -16,7 +16,7 @@ with st.sidebar:
 
 if api_key:
     genai.configure(api_key=api_key)
-    # Usando gemini-pro para maior compatibilidade
+    # Trocado para gemini-pro para evitar o erro 404
     model = genai.GenerativeModel('gemini-pro')
 
     if "messages" not in st.session_state:
@@ -33,19 +33,12 @@ if api_key:
 
         with st.chat_message("assistant"):
             try:
-                # CONTEXTO ATUALIZADO: Definição do seu modelo de negócio
+                # Contexto especializado no seu produto
                 contexto = """
-                Você é o Especialista de IA do NUSaas. Seu objetivo é ajudar o cliente a entender nossa plataforma.
-                O NUSaas é uma plataforma completa que oferece:
-                1. Dashboard Inteligente: Para gestão de dados e visualização de métricas de IA.
-                2. API para Chatbots: Conectividade fácil para integrar nossa IA em qualquer site ou sistema.
-                3. Fluxos de Automação: Ferramenta visual para criar automações complexas (No-Code).
-
-                Planos:
-                - Starter: R$ 197/mês (Acesso à API e Dashboard básico).
-                - Business: R$ 497/mês (Fluxos de automação ilimitados e suporte VIP).
-
-                Seja profissional, técnico e sempre tente mostrar o valor da automação para o negócio do cliente.
+                Você é o Especialista de IA do NUSaas. 
+                O NUSaas oferece: Dashboard de métricas, API para Chatbots e Fluxos de Automação No-Code.
+                Planos: Starter (R$ 197/mês) e Business (R$ 497/mês).
+                Seja profissional e técnico.
                 """
                 
                 response = model.generate_content(f"{contexto}\nCliente: {prompt}")
