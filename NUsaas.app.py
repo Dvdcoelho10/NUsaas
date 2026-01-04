@@ -14,7 +14,7 @@ with st.sidebar:
 
 if api_key:
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-1.5-flash-latest')
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -38,4 +38,5 @@ if api_key:
             except Exception as e:
                 st.error(f"Erro na API: {e}")
 else:
+
     st.warning("Insira sua API Key na lateral para começar.")
