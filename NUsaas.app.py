@@ -16,7 +16,7 @@ with st.sidebar:
 
 if api_key:
     genai.configure(api_key=api_key)
-    # Trocado para gemini-pro para evitar o erro 404
+    # gemini-pro é o modelo mais estável para evitar o erro 404
     model = genai.GenerativeModel('gemini-pro')
 
     if "messages" not in st.session_state:
@@ -33,7 +33,6 @@ if api_key:
 
         with st.chat_message("assistant"):
             try:
-                # Contexto especializado no seu produto
                 contexto = """
                 Você é o Especialista de IA do NUSaas. 
                 O NUSaas oferece: Dashboard de métricas, API para Chatbots e Fluxos de Automação No-Code.
